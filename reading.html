@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reading Zone – EduSpark Kids</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      background-color: #fff9f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #333;
+    }
+
+    .sight-words, .story-box {
+      margin-top: 2rem;
+    }
+
+    .word-button {
+      font-size: 1.2rem;
+      background-color: #ffd166;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      margin: 0.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .word-button:hover {
+      background-color: #ffb800;
+    }
+
+    .story-box {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: left;
+    }
+
+    .story-box img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .story-text {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .btn {
+      margin-top: 2rem;
+      background-color: #4caf50;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>📖 Welcome to the Reading Zone!</h1>
+    <p>Practice sight words, read stories, and have fun learning.</p>
+
+    <!-- 🔤 Sight Words -->
+    <section class="sight-words">
+      <h2>🔠 Tap a Word to Hear It</h2>
+      <button class="word-button" onclick="playWord('the')">the</button>
+      <button class="word-button" onclick="playWord('and')">and</button>
+      <button class="word-button" onclick="playWord('see')">see</button>
+      <button class="word-button" onclick="playWord('you')">you</button>
+      <button class="word-button" onclick="playWord('can')">can</button>
+      <button class="word-button" onclick="playWord('like')">like</button>
+		<button class="word-button" onclick="playWord('bug')">bug</button>
+		<button class="word-button" onclick="playWord('dog')">dog</button>
+		<button class="word-button" onclick="playWord('ball')">ball</button>
+		<button class="word-button" onclick="playWord('hat')">hat</button>
+
+    </section>
+
+    <!-- 🐱 Story Section -->
+    <section class="story-box">
+      <img src="images/story-cat.jpg" alt="Cat Story">
+      <div class="story-text">
+        <p>This is a cat.</p>
+        <p>The cat has a hat.</p>
+        <p>The hat is red.</p>
+        <p>The cat can jump!</p>
+      </div>
+    </section>
+	  <section class="story-box">
+  <img src="images/story-dog.jpg" alt="Big Dog Story">
+  <div class="story-text">
+    <p>This is a big dog.</p>
+    <p>The dog can run fast.</p>
+    <p>The dog sees a ball.</p>
+    <p>The dog gets the ball!</p>
+  </div>
+</section>
+
+<section class="story-box">
+  <h3>🐶 What does the dog get?</h3>
+  <button class="word-button" onclick="alert('Yes! The ball.')">A ball</button>
+  <button class="word-button" onclick="alert('Oops! Not a stick.')">A stick</button>
+</section>
+	  <section class="story-box">
+  <img src="images/story-bug.jpg" alt="Bug Story">
+  <div class="story-text">
+    <p>Look at the bug!</p>
+    <p>The bug is on a rug.</p>
+    <p>The bug can hop!</p>
+    <p>What a fun bug!</p>
+  </div>
+
+</section>
+
+<section class="story-box">
+  <h3>🐞 Where is the bug?</h3>
+  <button class="word-button" onclick="alert('Correct! On a rug.')">On a rug</button>
+  <button class="word-button" onclick="alert('Nope! Not in a jar.')">In a jar</button>
+</section>
+
+
+
+    <!-- 🧠 Optional Comprehension -->
+    <section class="story-box">
+      <h3>🧠 What color is the hat?</h3>
+      <button class="word-button" onclick="alert('Yes! It is red.')">Red</button>
+      <button class="word-button" onclick="alert('Oops! Try again.')">Blue</button>
+    </section>
+
+    <button class="btn" onclick="location.href='grade1.html'">⬅ Back to Grade 1</button>
+	<style="margin-top: 3rem;">
+  <button class="btn" onclick="location.href='phonic-game.html'">🔤 Try a Phonics Game</button>
+</div>
+
+
+  <script>
+    function playWord(word) {
+      const speak = new SpeechSynthesisUtterance(word);
+      speak.rate = 0.9;
+      speak.pitch = 1;
+      speechSynthesis.speak(speak);
+    }
+  </script>
+
+</body>
+</html>

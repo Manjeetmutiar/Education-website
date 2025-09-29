@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fun Stories – EduSpark Kids</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      background-color: #fffbe7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .story {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .story:hover {
+      background-color: #f0f8ff;
+    }
+
+    .story-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .story-content {
+      display: none;
+      margin-top: 0.8rem;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .read-tag {
+      font-size: 0.9rem;
+      color: green;
+      margin-left: 1rem;
+    }
+
+    .locked {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .locked .story-title::after {
+      content: " 🔒 (Earn 5 stars to unlock)";
+      font-size: 0.9rem;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>📖 Fun Stories</h1>
+
+    <!-- Story 1 -->
+    <div class="story" onclick="toggleStory(1)">
+      <div class="story-title">The Lost Balloon <span id="read-1" class="read-tag" style="display:none;">✓ Read</span></div>
+      <div class="story-content" id="content-1">
+        One day, Mia lost her red balloon. It floated over the park and into the sky. But soon, a bird spotted it and helped her find it again!
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story" onclick="toggleStory(2)">
+      <div class="story-title">Max and the Magic Sandwich <span id="read-2" class="read-tag" style="display:none;">✓ Read</span></div>
+      <div class="story-content" id="content-2">
+        Max made a sandwich so big it came to life! It danced, jumped, and ran out the door. Max had to chase it all through town!
+      </div>
+    </div>
+
+    <!-- Locked Story -->
+    <div class="story locked" id="story-3" onclick="toggleStory(3)">
+      <div class="story-title">🌟 Luna’s Rocket to the Stars</div>
+      <div class="story-content" id="content-3">
+        Luna dreamed of space. One night, her bed turned into a rocket and zoomed her to the stars, where she met alien friends and saved a space whale!
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleStory(id) {
+      const content = document.getElementById("content-" + id);
+      const tag = document.getElementById("read-" + id);
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+        localStorage.setItem("storyRead-" + id, "true");
+        if (tag) tag.style.display = "inline";
+      }
+    }
+
+    function unlockStories() {
+      const stars = parseInt(localStorage.getItem("typingStars")) || 0;
+      if (stars >= 5) {
+        const lockedStory = document.getElementById("story-3");
+        lockedStory.classList.remove("locked");
+      }
+    }
+
+    function showReadTags() {
+      for (let i = 1; i <= 3; i++) {
+        if (localStorage.getItem("storyRead-" + i) === "true") {
+          const tag = document.getElementById("read-" + i);
+          if (tag) tag.style.display = "inline";
+        }
+      }
+    }
+
+    window.onload = function () {
+      unlockStories();
+      showReadTags();
+    }
+  </script>
+
+</body>
+</html>

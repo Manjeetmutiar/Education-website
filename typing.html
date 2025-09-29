@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Typing Adventure – EduSpark Kids</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      background: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .typing-container {
+      max-width: 700px;
+      margin: 3rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .typing-task {
+      font-size: 1.3rem;
+      background: #e3f7ff;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    input[type="text"] {
+      padding: 0.6rem;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 500px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .btn {
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn:disabled {
+      background-color: #ccc;
+    }
+
+    .stars {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="typing-container">
+    <h2>⌨️ Typing Adventure</h2>
+    <p class="typing-task" id="task">Loading...</p>
+    <input type="text" id="userInput" placeholder="Type here..." oninput="checkTyping()" />
+    <br>
+    <button class="btn" id="nextBtn" onclick="nextTask()" disabled>Next Challenge</button>
+    <div class="stars" id="starCount">⭐ Stars: 0</div>
+  </div>
+
+  <script>
+    const tasks = [
+      "Save the Earth",
+      "Bees love flowers",
+      "Recycle plastic bottles"
+    ];
+
+    let currentTask = 0;
+    let stars = parseInt(localStorage.getItem("typingStars")) || 0;
+
+    const taskEl = document.getElementById("task");
+    const inputEl = document.getElementById("userInput");
+    const nextBtn = document.getElementById("nextBtn");
+    const starCountEl = document.getElementById("starCount");
+
+    function loadTask() {
+      taskEl.textContent = tasks[currentTask];
+      inputEl.value = "";
+      nextBtn.disabled = true;
+      inputEl.focus();
+    }
+
+    function checkTyping() {
+      const userInput = inputEl.value.trim();
+      const correctText = tasks[currentTask];
+      if (userInput === correctText) {
+        nextBtn.disabled = false;
+      } else {
+        nextBtn.disabled = true;
+      }
+    }
+
+    function nextTask() {
+      stars += 1;
+      localStorage.setItem("typingStars", stars);
+      starCountEl.textContent = `⭐ Stars: ${stars}`;
+      currentTask++;
+
+      if (currentTask < tasks.length) {
+        loadTask();
+      } else {
+        taskEl.textContent = "🎉 You completed all challenges!";
+        inputEl.style.display = "none";
+        nextBtn.style.display = "none";
+      }
+    }
+
+    // Initialize
+    starCountEl.textContent = `⭐ Stars: ${stars}`;
+    loadTask();
+  </script>
+
+</body>
+</html>

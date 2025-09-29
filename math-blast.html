@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Math Blast – EduSpark Kids</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    .game-section {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #fff0d6;
+    }
+
+    .game-section h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .game-section p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .math-game-box {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .math-question {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .input-group input {
+      padding: 10px;
+      font-size: 1rem;
+      width: 100px;
+      text-align: center;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .btn.check {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .result-message {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">EduSpark Kids</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="games.html" class="active">Games</a>
+        <a href="activities.html">Activities</a>
+        <a href="stories.html">Stories</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="auth-buttons">
+        <a href="signup.html" class="btn primary">Join Free</a>
+        <a href="signin.html" class="btn">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero kids-hero" style="background-image: url('images/hero.jpg');">
+    <div class="hero-overlay">
+      <h1>Math Blast 🚀</h1>
+      <p>Boost your brain with fun math challenges!</p>
+    </div>
+  </section>
+
+  <!-- Game Section -->
+  <section class="game-section">
+    <h2>Quick Math Challenge</h2>
+    <p>Answer as many questions as you can!</p>
+
+    <div class="math-game-box">
+      <div class="math-question" id="question">What is 3 + 5?</div>
+      <div class="input-group">
+        <input type="number" id="answerInput" placeholder="Your answer" />
+        <button class="btn check" onclick="checkAnswer()">Check</button>
+      </div>
+      <div class="result-message" id="resultMessage"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer">
+      <div class="quick-links">
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="activities.html">Activities</a>
+        <a href="stories.html">Stories</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="social">
+        <a href="#">YouTube Kids</a>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+      </div>
+      <div class="policies">
+        <a href="#">Privacy</a>
+        <a href="#">Support</a>
+        <a href="#">For Parents</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Math Game Script -->
+  <script>
+    let num1, num2, correctAnswer;
+
+    function generateQuestion() {
+      num1 = Math.floor(Math.random() * 10) + 1;
+      num2 = Math.floor(Math.random() * 10) + 1;
+      correctAnswer = num1 + num2;
+      document.getElementById("question").textContent = `What is ${num1} + ${num2}?`;
+      document.getElementById("answerInput").value = "";
+      document.getElementById("resultMessage").textContent = "";
+    }
+
+    function checkAnswer() {
+      const userAnswer = parseInt(document.getElementById("answerInput").value);
+      const result = document.getElementById("resultMessage");
+
+      if (userAnswer === correctAnswer) {
+        result.textContent = "🎉 Correct! Great job!";
+        result.style.color = "green";
+        setTimeout(generateQuestion, 1500);
+      } else {
+        result.textContent = "❌ Oops! Try again!";
+        result.style.color = "red";
+      }
+    }
+
+    // Generate first question on page load
+    window.onload = generateQuestion;
+  </script>
+
+</body>
+</html>
+

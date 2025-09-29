@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Science Quiz – EduSpark Kids</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .quiz-container {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .question {
+      margin-bottom: 1.5rem;
+    }
+    .question h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .options label {
+      display: block;
+      margin: 0.3rem 0;
+      cursor: pointer;
+    }
+    .btn.submit {
+      margin-top: 1rem;
+    }
+    #result {
+      margin-top: 2rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">EduSpark Kids</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="activities.html">Activities</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="quiz-container">
+    <h2>🧪 Quick Science Quiz</h2>
+
+    <form id="quizForm">
+      <div class="question">
+        <h3>1. What planet is known as the "Red Planet"?</h3>
+        <div class="options">
+          <label><input type="radio" name="q1" value="Mars" /> Mars</label>
+          <label><input type="radio" name="q1" value="Venus" /> Venus</label>
+          <label><input type="radio" name="q1" value="Jupiter" /> Jupiter</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h3>2. What do plants need to make their own food?</h3>
+        <div class="options">
+          <label><input type="radio" name="q2" value="Sunlight" /> Sunlight</label>
+          <label><input type="radio" name="q2" value="Wind" /> Wind</label>
+          <label><input type="radio" name="q2" value="Sound" /> Sound</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h3>3. Which part of your body helps you think?</h3>
+        <div class="options">
+          <label><input type="radio" name="q3" value="Brain" /> Brain</label>
+          <label><input type="radio" name="q3" value="Heart" /> Heart</label>
+          <label><input type="radio" name="q3" value="Lungs" /> Lungs</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h3>4. What is H<sub>2</sub>O commonly known as?</h3>
+        <div class="options">
+          <label><input type="radio" name="q4" value="Water" /> Water</label>
+          <label><input type="radio" name="q4" value="Oxygen" /> Oxygen</label>
+          <label><input type="radio" name="q4" value="Hydrogen" /> Hydrogen</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h3>5. Which of these is a solid?</h3>
+        <div class="options">
+          <label><input type="radio" name="q5" value="Ice" /> Ice</label>
+          <label><input type="radio" name="q5" value="Steam" /> Steam</label>
+          <label><input type="radio" name="q5" value="Milk" /> Milk</label>
+        </div>
+      </div>
+
+      <button type="button" class="btn submit" onclick="checkAnswers()">Submit Answers</button>
+    </form>
+
+    <div id="result"></div>
+  </main>
+
+  <script>
+    function checkAnswers() {
+      const correctAnswers = {
+        q1: "Mars",
+        q2: "Sunlight",
+        q3: "Brain",
+        q4: "Water",
+        q5: "Ice"
+      };
+      
+      let score = 0;
+      for (let key in correctAnswers) {
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        if (selected && selected.value === correctAnswers[key]) {
+          score++;
+        }
+      }
+
+      const result = document.getElementById("result");
+      result.innerHTML = `You got ${score} out of 5 correct! 🎉 ${score >= 4 ? 'Great job, Science Star!' : 'Keep exploring!'}`;
+    }
+  </script>
+
+</body>
+</html>

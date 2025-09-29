@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Word Builder – EduSpark Kids</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+	      body {
+      font-family: 'Comic Neue', cursive;
+      background-color: #fce4ec;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #f06292;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .game-section {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #e0f7fa;
+    }
+
+    .game-section h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .game-section p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .word-game-box {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .scrambled-word {
+      font-size: 2rem;
+      letter-spacing: 10px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #00796b;
+    }
+
+    .input-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .input-group input {
+      padding: 10px;
+      font-size: 1rem;
+      width: 200px;
+      text-align: center;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .btn.check {
+      background-color: #00796b;
+      color: white;
+    }
+
+    .result-message {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+	 <h1>Word Builder 🧩</h1>
+    <p>Unscramble the letters to make a word!</p>
+</header>
+
+</section>
+
+<!-- Game Section -->
+<section class="game-section">
+  <h2>Can You Unscramble It?</h2>
+  <p>Type the correct word and click "Check"</p>
+
+  <div class="word-game-box">
+    <div class="scrambled-word" id="scrambled">TAC</div>
+    <div class="input-group">
+      <input type="text" id="wordInput" placeholder="Your guess" />
+      <button class="btn check" onclick="checkWord()">Check</button>
+    </div>
+    <div class="result-message" id="resultMessage"></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container footer">
+    <div class="quick-links">
+      <a href="index.html">Home</a>
+      <a href="games.html">Games</a>
+      <a href="activities.html">Activities</a>
+      <a href="stories.html">Stories</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="social">
+      <a href="#">YouTube Kids</a>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+    </div>
+    <div class="policies">
+      <a href="#">Privacy</a>
+      <a href="#">Support</a>
+      <a href="#">For Parents</a>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script>
+  const words = ["CAT", "DOG", "HAT", "FISH", "BOOK", "TREE", "MOON", "CAR", "LION", "BIRD"];
+  let currentWord = "";
+  let scrambled = "";
+
+  function scrambleWord(word) {
+    return word.split('').sort(() => Math.random() - 0.5).join('');
+  }
+
+  function loadWord() {
+    currentWord = words[Math.floor(Math.random() * words.length)];
+    scrambled = scrambleWord(currentWord);
+    // Re-scramble if it's the same as original
+    while (scrambled === currentWord) {
+      scrambled = scrambleWord(currentWord);
+    }
+    document.getElementById("scrambled").textContent = scrambled;
+    document.getElementById("wordInput").value = "";
+    document.getElementById("resultMessage").textContent = "";
+  }
+
+  function checkWord() {
+    const guess = document.getElementById("wordInput").value.trim().toUpperCase();
+    const message = document.getElementById("resultMessage");
+
+    if (guess === currentWord) {
+      message.textContent = "🎉 Correct! Well done!";
+      message.style.color = "green";
+      setTimeout(loadWord, 1500);
+    } else {
+      message.textContent = "❌ Try again!";
+      message.style.color = "red";
+    }
+  }
+
+  window.onload = loadWord;
+</script>
+
+</body>
+</html>
+

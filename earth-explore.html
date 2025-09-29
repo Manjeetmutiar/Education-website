@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Earth Explorer – EduSpark Kids</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .earth-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .mission-step {
+      margin-bottom: 2rem;
+    }
+    .btn.next {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">EduSpark Kids</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="activities.html">Activities</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="earth-container">
+  <h2>🌍 Earth Explorer</h2>
+
+  <!-- Step 1 -->
+  <div id="step1" class="mission-step">
+    <p>Welcome, Eco Hero! 🌱 The planet needs your help. First mission: stop water waste!</p>
+    <p>Which of these saves water?</p>
+    <button class="btn" onclick="alert('Correct! Turn off the tap! 💧')">Turning off the tap while brushing</button><br>
+    <button class="btn" onclick="alert('Try again!')">Leaving the tap on</button>
+    <br><br>
+    <button class="btn next" onclick="showStep(2)">Next Mission</button>
+  </div>
+
+  <!-- Step 2 -->
+  <div id="step2" class="mission-step" style="display:none;">
+    <p>🐝 Bee Crisis! Why are bees important?</p>
+    <button class="btn" onclick="alert('Yes! They pollinate plants 🌼')">They help pollinate plants</button><br>
+    <button class="btn" onclick="alert('Nope!')">They eat plastic</button>
+    <br><br>
+    <button class="btn next" onclick="showStep(3)">Next Mission</button>
+  </div>
+
+  <!-- Step 3 -->
+  <div id="step3" class="mission-step" style="display:none;">
+    <p>♻️ Recycling Time! Which item should go in the recycling bin?</p>
+    <button class="btn" onclick="alert('Correct! ♻️')">A plastic bottle</button><br>
+    <button class="btn" onclick="alert('Nope, that belongs in trash.')">Leftover food</button>
+    <br><br>
+    <button class="btn next" onclick="showStep(4)">Next Mission</button>
+  </div>
+
+  <!-- Step 4 -->
+  <div id="step4" class="mission-step" style="display:none;">
+    <p>🌳 Tree Trouble! Why are trees important for the Earth?</p>
+    <button class="btn" onclick="alert('Correct! Trees clean the air! 🌬️')">They clean the air and give oxygen</button><br>
+    <button class="btn" onclick="alert('Nope! Trees help us, not block us.')">They block sunlight</button>
+    <br><br>
+    <button class="btn next" onclick="showStep(5)">Next Mission</button>
+  </div>
+
+  <!-- Step 5 -->
+  <div id="step5" class="mission-step" style="display:none;">
+    <p>🔌 Energy Saver! What’s a smart way to save electricity?</p>
+    <button class="btn" onclick="alert('Yes! That saves energy! 💡')">Turn off lights when leaving a room</button><br>
+    <button class="btn" onclick="alert('Not quite! Leaving lights on uses more power.')">Leave lights on all day</button>
+    <br><br>
+    <button class="btn next" onclick="showStep(6)">Final Mission</button>
+  </div>
+
+  <!-- Step 6 -->
+  <div id="step6" class="mission-step" style="display:none;">
+    <p>🐬 Ocean Rescue! What harms sea animals the most?</p>
+    <button class="btn" onclick="alert('Correct! Plastic is a big danger. 🐢')">Plastic pollution</button><br>
+    <button class="btn" onclick="alert('Nope! Trees don’t hurt sea animals.')">Planting trees</button>
+    <br><br>
+    <button class="btn next" onclick="finishMission()">Finish</button>
+  </div>
+
+  <!-- Final Step -->
+  <div id="step7" class="mission-step" style="display:none;">
+    <p>🎉 You helped the planet! You're now a certified Earth Explorer!</p>
+    <p>💚 Thanks for protecting nature.</p>
+    <button class="btn primary" onclick="location.href='science-quest.html'">Back to Quest</button>
+  </div>
+</main>
+
+<script>
+  function showStep(step) {
+    for (let i = 1; i <= 7; i++) {
+      document.getElementById("step" + i).style.display = "none";
+    }
+    document.getElementById("step" + step).style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function finishMission() {
+    localStorage.setItem('earthDone', 'true');  // Track badge
+    showStep(7);
+  }
+</script>
+
+</body>
+</html>

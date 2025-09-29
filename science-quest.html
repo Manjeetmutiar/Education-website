@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Science Quest – EduSpark Kids</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">EduSpark Kids</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="activities.html">Activities</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero science-hero" style="background-image: url('images/science-quest.jpg');">
+    <div class="hero-overlay">
+      <h1>Science Quest 🔬</h1>
+      <p>Test your science smarts with cool quizzes and fun missions!</p>
+      <button class="btn primary" onclick="startQuest()">Start Quest</button>
+    </div>
+  </section>
+
+  <!-- Quest Section -->
+  <section class="quest container" id="quest-start" style="display:none;">
+    <h2>Choose Your Challenge</h2>
+    <div class="quest-grid">
+      <div class="quest-card">
+        <h3>🧪 Quick Quiz</h3>
+        <p>Can you answer all 5 science questions correctly?</p>
+        <button class="btn small" onclick="location.href='quick-quiz.html'">Take Quiz</button>
+      </div>
+      <div class="quest-card">
+        <h3>🚀 Mission: Space!</h3>
+        <p>Complete your astronaut training and explore the solar system.</p>
+        <button class="btn small" onclick="location.href='mission-quiz.html'">Begin Mission</button>
+      </div>
+      <div class="quest-card">
+        <h3>🌍 Earth Explorer</h3>
+        <p>Help save the planet by solving climate puzzles.</p>
+        <button class="btn small" onclick="location.href='earth-explore.html'">Explore</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer">
+      <div class="quick-links">
+        <a href="#">Home</a>
+        <a href="#">Games</a>
+        <a href="#">Activities</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="social">
+        <a href="#">YouTube Kids</a>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+      </div>
+      <div class="policies">
+        <a href="#">Privacy</a>
+        <a href="#">Support</a>
+        <a href="#">For Parents</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function startQuest() {
+      document.getElementById('quest-start').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('quest-start').offsetTop, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>

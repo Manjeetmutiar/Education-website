@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mission: Space! – EduSpark Kids</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .mission-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .mission-step {
+      margin-bottom: 2rem;
+    }
+    .btn.next {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">EduSpark Kids</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="activities.html">Activities</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mission-container">
+    <h2>🚀 Mission: Space!</h2>
+    <div id="step1" class="mission-step">
+      <p>You’ve been chosen to join the EduSpark Space Academy! Your mission: travel through the solar system and collect facts from each planet.</p>
+      <p>First stop: 🚀 *Blast off!*</p>
+      <button class="btn next" onclick="showStep(2)">Launch!</button>
+    </div>
+
+    <div id="step2" class="mission-step" style="display:none;">
+      <p>🌕 You’ve reached the Moon! What causes moon phases?</p>
+      <button class="btn" onclick="alert('Correct! 🌟')">The Moon's position around Earth</button><br>
+      <button class="btn" onclick="alert('Oops! Try again later.')">Clouds covering the Moon</button>
+      <br><br>
+      <button class="btn next" onclick="showStep(3)">Continue to Mars</button>
+    </div>
+
+    <div id="step3" class="mission-step" style="display:none;">
+      <p>🪐 You arrive at Mars. It’s cold and red. What is Mars often called?</p>
+      <button class="btn" onclick="alert('Correct! 🌟')">The Red Planet</button><br>
+      <button class="btn" onclick="alert('Oops! Not quite.')">The Gas Giant</button>
+      <br><br>
+      <button class="btn next" onclick="showStep(4)">Next Stop: Saturn</button>
+    </div>
+
+    <div id="step4" class="mission-step" style="display:none;">
+      <p>💫 You float near Saturn’s rings. What are Saturn’s rings made of?</p>
+      <button class="btn" onclick="alert('Correct! 🌟')">Ice and Rock</button><br>
+      <button class="btn" onclick="alert('Nope! Try again.')">Fire and Lava</button>
+      <br><br>
+      <button class="btn next" onclick="showStep(5)">Return to Earth</button>
+    </div>
+
+    <div id="step5" class="mission-step" style="display:none;">
+      <p>🌍 Welcome home, astronaut! You’ve completed your mission!</p>
+      <p>🎖️ Mission Complete: 3 Planets Explored, 3 Facts Learned!</p>
+      <button class="btn primary" onclick="location.href='science-quest.html'">Back to Quest</button>
+    </div>
+  </main>
+
+  <script>
+    function showStep(step) {
+      for (let i = 1; i <= 5; i++) {
+        document.getElementById("step" + i).style.display = "none";
+      }
+      document.getElementById("step" + step).style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+
+</body>
+</html>

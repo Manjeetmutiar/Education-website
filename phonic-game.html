@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Phonics Game – EduSpark Kids</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      background-color: #fdf6e3;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .game-box {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .phonics-button {
+      font-size: 1.4rem;
+      margin: 1rem;
+      padding: 0.7rem 1.2rem;
+      background-color: #ffd166;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .phonics-button:hover {
+      background-color: #fcbf49;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .phonics-img {
+      width: 140px;
+      margin: 1rem;
+      border: 3px solid transparent;
+      border-radius: 10px;
+      transition: border 0.2s;
+      cursor: pointer;
+    }
+
+    .phonics-img:hover {
+      border-color: #4caf50;
+    }
+
+    .btn {
+      margin-top: 2rem;
+      background-color: #4caf50;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🔤 Phonics Game: Match the Sound!</h1>
+    <p>Click a sound, then choose the right image!</p>
+
+    <div class="game-box">
+      <h2>1️⃣ What starts with <strong>B</strong>?</h2>
+      <button class="phonics-button" onclick="playSound('b')">🔊 Say "Buh"</button>
+
+      <div class="image-grid">
+        <img src="images/ball.jpg" alt="Ball" class="phonics-img" onclick="checkAnswer('ball')">
+        <img src="images/cat.jpg" alt="Cat" class="phonics-img" onclick="checkAnswer('cat')">
+        <img src="images/fish.jpg" alt="Fish" class="phonics-img" onclick="checkAnswer('fish')">
+      </div>
+    </div>
+
+    <button class="btn" onclick="location.href='reading.html'">⬅ Back to Reading Zone</button>
+  </div>
+
+  <script>
+    function playSound(letter) {
+      const audio = new SpeechSynthesisUtterance(letter);
+      audio.rate = 0.8;
+      audio.pitch = 1.2;
+      speechSynthesis.speak(audio);
+    }
+
+    function checkAnswer(choice) {
+      if (choice === "ball") {
+        alert("🎉 Yes! Ball starts with B!");
+      } else {
+        alert("❌ Oops! Try again.");
+      }
+    }
+  </script>
+
+</body>
+</html>

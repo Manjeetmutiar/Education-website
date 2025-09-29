@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grade 1 Math Fun - EduSpark Kids</title>
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive, sans-serif;
+      background: #f0f8ff;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      color: #333;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #0275d8;
+    }
+    .game-section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    button {
+      background-color: #0275d8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin: 8px 6px 8px 0;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #025aa5;
+    }
+    .feedback {
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .counting-items {
+      font-size: 36px;
+      margin: 15px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Grade 1 Math Fun!</h1>
+
+  <!-- Addition Game -->
+  <section class="game-section" id="addition-game">
+    <h2>Addition Practice ➕</h2>
+    <p id="addition-question">What is 3 + 5?</p>
+    <div id="addition-options"></div>
+    <div class="feedback" id="addition-feedback"></div>
+    <button onclick="nextAddition()">Next Addition</button>
+  </section>
+
+  <!-- Subtraction Game -->
+  <section class="game-section" id="subtraction-game">
+    <h2>Subtraction Practice ➖</h2>
+    <p id="subtraction-question">What is 9 - 4?</p>
+    <div id="subtraction-options"></div>
+    <div class="feedback" id="subtraction-feedback"></div>
+    <button onclick="nextSubtraction()">Next Subtraction</button>
+  </section>
+
+  <!-- Counting Game -->
+  <section class="game-section" id="counting-game">
+    <h2>Counting Practice 🔢</h2>
+    <div class="counting-items" id="counting-items">🍎🍎🍎🍎</div>
+    <p>How many apples are there?</p>
+    <div id="counting-options"></div>
+    <div class="feedback" id="counting-feedback"></div>
+    <button onclick="nextCounting()">Next Counting</button>
+  </section>
+
+<script>
+  // Utility to shuffle array
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  // Addition Game Logic
+  const additionQuestions = [
+    {a: 3, b: 5},
+    {a: 7, b: 2},
+    {a: 6, b: 4},
+    {a: 1, b: 8},
+    {a: 5, b: 5},
+  ];
+  let additionIndex = 0;
+
+  function setupAddition() {
+    const q = additionQuestions[additionIndex];
+    document.getElementById('addition-question').textContent = `What is ${q.a} + ${q.b}?`;
+
+    let correctAnswer = q.a + q.b;
+    let options = [correctAnswer];
+    // Add random wrong answers
+    while (options.length < 4) {
+      let rand = Math.floor(Math.random() * 15) + 1;
+      if (!options.includes(rand)) options.push(rand);
+    }
+    shuffle(options);
+
+    const container = document.getElementById('addition-options');
+    container.innerHTML = '';
+    options.forEach(option => {
+      const btn = document.createElement('button');
+      btn.textContent = option;
+      btn.onclick = () => {
+        const feedback = document.getElementById('addition-feedback');
+        if (option === correctAnswer) {
+          feedback.textContent = '✅ Correct!';
+          feedback.style.color = 'green';
+        } else {
+          feedback.textContent = '❌ Try again!';
+          feedback.style.color = 'red';
+        }
+      };
+      container.appendChild(btn);
+    });
+    document.getElementById('addition-feedback').textContent = '';
+  }
+
+  function nextAddition() {
+    additionIndex = (additionIndex + 1) % additionQuestions.length;
+    setupAddition();
+  }
+
+  // Subtraction Game Logic
+  const subtractionQuestions = [
+    {a: 9, b: 4},
+    {a: 7, b: 3},
+    {a: 10, b: 5},
+    {a: 8, b: 6},
+    {a: 6, b: 2},
+  ];
+  let subtractionIndex = 0;
+
+  function setupSubtraction() {
+    const q = subtractionQuestions[subtractionIndex];
+    document.getElementById('subtraction-question').textContent = `What is ${q.a} - ${q.b}?`;
+
+    let correctAnswer = q.a - q.b;
+    let options = [correctAnswer];
+    // Add random wrong answers
+    while (options.length < 4) {
+      let rand = Math.floor(Math.random() * 15) + 0;
+      if (!options.includes(rand)) options.push(rand);
+    }
+    shuffle(options);
+
+    const container = document.getElementById('subtraction-options');
+    container.innerHTML = '';
+    options.forEach(option => {
+      const btn = document.createElement('button');
+      btn.textContent = option;
+      btn.onclick = () => {
+        const feedback = document.getElementById('subtraction-feedback');
+        if (option === correctAnswer) {
+          feedback.textContent = '✅ Correct!';
+          feedback.style.color = 'green';
+        } else {
+          feedback.textContent = '❌ Try again!';
+          feedback.style.color = 'red';
+        }
+      };
+      container.appendChild(btn);
+    });
+    document.getElementById('subtraction-feedback').textContent = '';
+  }
+
+  function nextSubtraction() {
+    subtractionIndex = (subtractionIndex + 1) % subtractionQuestions.length;
+    setupSubtraction();
+  }
+
+  // Counting Game Logic
+  const countingQuestions = [
+    {item: '🍎', count: 3},
+    {item: '🍌', count: 5},
+    {item: '🐝', count: 4},
+    {item: '🐶', count: 2},
+    {item: '🍓', count: 6},
+  ];
+  let countingIndex = 0;
+
+  function setupCounting() {
+    const q = countingQuestions[countingIndex];
+    const container = document.getElementById('counting-items');
+    container.textContent = q.item.repeat(q.count);
+
+    let options = [q.count];
+    while (options.length < 4) {
+      let rand = Math.floor(Math.random() * 10) + 1;
+      if (!options.includes(rand)) options.push(rand);
+    }
+    shuffle(options);
+
+    const optionsContainer = document.getElementById('counting-options');
+    optionsContainer.innerHTML = '';
+    options.forEach(option => {
+      const btn = document.createElement('button');
+      btn.textContent = option;
+      btn.onclick = () => {
+        const feedback = document.getElementById('counting-feedback');
+        if (option === q.count) {
+          feedback.textContent = '✅ Correct!';
+          feedback.style.color = 'green';
+        } else {
+          feedback.textContent = '❌ Try again!';
+          feedback.style.color = 'red';
+        }
+      };
+      optionsContainer.appendChild(btn);
+    });
+    document.getElementById('counting-feedback').textContent = '';
+  }
+
+  function nextCounting() {
+    countingIndex = (countingIndex + 1) % countingQuestions.length;
+    setupCounting();
+  }
+
+  // Initialize all games
+  setupAddition();
+  setupSubtraction();
+  setupCounting();
+
+</script>
+
+</body>
+</html>

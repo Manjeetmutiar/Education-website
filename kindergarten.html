@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kindergarten – EduSpark Kids</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      background-color: #fffaf0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #444;
+      font-size: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 1.2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #f76d6d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #f44336;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎉 Kindergarten Learning</h1>
+    <p style="text-align:center;">Learn letters, colors, numbers, and sing songs!</p>
+
+    <div class="grid">
+      <!-- Letters -->
+      <div class="card" onclick="location.href='letters.html'">
+        <img src="images/letters.png" alt="Letters A B C">
+        <h3>🔤 Learn Letters</h3>
+        <p>Practice the alphabet with games & songs!</p>
+        <a class="btn">Start</a>
+      </div>
+
+      <!-- Colors -->
+      <div class="card" onclick="location.href='colour.html'">
+        <img src="images/colors.png" alt="Colors">
+        <h3>🎨 Learn Colors</h3>
+        <p>Discover bright colors through fun games!</p>
+        <a class="btn">Explore</a>
+      </div>
+
+      <!-- Numbers -->
+      <div class="card" onclick="location.href='number.html'">
+        <img src="images/numbers.png" alt="123">
+        <h3>🔢 Learn Numbers</h3>
+        <p>Count, match, and play with numbers!</p>
+        <a class="btn">Start</a>
+      </div>
+
+      <!-- Songs -->
+      <div class="card" onclick="location.href='sing-song.html'">
+        <img src="images/songs.png" alt="Music Notes">
+        <h3>🎵 Sing Along Songs</h3>
+        <p>Enjoy ABC, number, and animal songs!</p>
+        <a class="btn">Sing</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+

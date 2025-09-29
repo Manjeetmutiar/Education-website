@@ -1,0 +1,184 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grade 1 Math Fun - EduSpark Kids</title>
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive, sans-serif;
+      background: #f0f8ff;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      color: #333;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #0275d8;
+    }
+    .game-section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    button {
+      background-color: #0275d8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin: 8px 6px 8px 0;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #025aa5;
+    }
+    .feedback {
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .counting-items {
+      font-size: 36px;
+      margin: 15px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body><!-- Fun Activities Section -->
+<section class="game-section" id="fun-activities">
+  <h2>🎉 Fun Activities</h2>
+
+  <!-- Shape Drawing -->
+  <div>
+    <h3>Draw a Shape 🎨</h3>
+    <canvas id="drawingCanvas" width="300" height="200" style="border:1px solid #ccc;"></canvas><br/>
+    <button onclick="drawCircle()">Draw Circle</button>
+    <button onclick="drawSquare()">Draw Square</button>
+    <button onclick="clearCanvas()">Clear</button>
+  </div>
+
+  <hr/>
+
+  <!-- Color Matching -->
+  <div>
+    <h3>Color Matching Game 🌈</h3>
+    <p>Match the color name to the right color!</p>
+    <div>
+      <button onclick="checkColorMatch('red')">🔴 Red</button>
+      <button onclick="checkColorMatch('blue')">🔵 Blue</button>
+      <button onclick="checkColorMatch('green')">🟢 Green</button>
+    </div>
+    <p id="colorFeedback"></p>
+  </div>
+
+  <hr/>
+
+  <!-- Number Puzzle -->
+  <div>
+    <h3>Number Puzzle 🧩</h3>
+    <p>Arrange numbers from 1 to 5 in order:</p>
+    <div id="numberPuzzle" style="display:flex; gap:10px;">
+      <button draggable="true" ondragstart="drag(event)" id="num3">3</button>
+      <button draggable="true" ondragstart="drag(event)" id="num1">1</button>
+      <button draggable="true" ondragstart="drag(event)" id="num5">5</button>
+      <button draggable="true" ondragstart="drag(event)" id="num2">2</button>
+      <button draggable="true" ondragstart="drag(event)" id="num4">4</button>
+    </div>
+    <button onclick="checkPuzzleOrder()">Check Order</button>
+    <p id="puzzleFeedback"></p>
+  </div>
+</section>
+
+<script>
+  // Drawing shapes
+  const canvas = document.getElementById('drawingCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function drawCircle() {
+    clearCanvas();
+    ctx.fillStyle = '#f44336'; // red
+    ctx.beginPath();
+    ctx.arc(150, 100, 50, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function drawSquare() {
+    clearCanvas();
+    ctx.fillStyle = '#2196f3'; // blue
+    ctx.fillRect(100, 50, 100, 100);
+  }
+
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // Color Matching Game
+  const correctColor = 'blue'; // change this to randomly pick if you want
+
+  function checkColorMatch(color) {
+    const feedback = document.getElementById('colorFeedback');
+    if (color === correctColor) {
+      feedback.textContent = '🎉 Great job! That’s correct!';
+      feedback.style.color = 'green';
+    } else {
+      feedback.textContent = 'Try again! That’s not the right color.';
+      feedback.style.color = 'red';
+    }
+  }
+
+  // Number Puzzle (Drag & Drop)
+  let dragged;
+
+  document.addEventListener("dragstart", function(event) {
+    dragged = event.target;
+    event.target.style.opacity = 0.5;
+  });
+
+  document.addEventListener("dragend", function(event) {
+    event.target.style.opacity = "";
+  });
+
+  document.addEventListener("dragover", function(event) {
+    event.preventDefault();
+  });
+
+  document.addEventListener("drop", function(event) {
+    event.preventDefault();
+    if (event.target.tagName === "BUTTON" && event.target.parentNode.id === "numberPuzzle") {
+      if (dragged !== event.target) {
+        let container = event.target.parentNode;
+        let draggedIndex = Array.from(container.children).indexOf(dragged);
+        let targetIndex = Array.from(container.children).indexOf(event.target);
+
+        if (draggedIndex < targetIndex) {
+          container.insertBefore(dragged, event.target.nextSibling);
+        } else {
+          container.insertBefore(dragged, event.target);
+        }
+      }
+    }
+  });
+
+  function checkPuzzleOrder() {
+    const container = document.getElementById('numberPuzzle');
+    const buttons = container.children;
+    let order = Array.from(buttons).map(btn => parseInt(btn.textContent));
+    const feedback = document.getElementById('puzzleFeedback');
+    const isCorrect = order.every((num, idx) => num === idx + 1);
+
+    if (isCorrect) {
+      feedback.textContent = '🎉 Perfect! Numbers are in order!';
+      feedback.style.color = 'green';
+    } else {
+      feedback.textContent = 'Oops! Try rearranging the numbers.';
+      feedback.style.color = 'red';
+    }
+  }
+</script>
+	</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grade 1 – EduSpark Kids</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      background-color: #f0f9ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #444;
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      color: #333;
+    }
+
+    .card p {
+      color: #555;
+    }
+
+    .btn {
+      margin-top: 1rem;
+      background-color: #4caf50;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎓 Grade 1 Learning</h1>
+    <p>Read, count, and explore with fun activities!</p>
+
+    <div class="subject-grid">
+      <!-- Reading -->
+      <div class="card">
+        <img src="images/grade1-reading.jpg" alt="Reading">
+        <h3>📖 Reading Zone</h3>
+        <p>Phonics, sight words, and fun short stories.</p>
+        <button class="btn" onclick="location.href='reading.html'">Start Reading</button>
+      </div>
+
+      <!-- Math -->
+      <div class="card">
+        <img src="images/grade1-math.jpg" alt="Math">
+        <h3>➕ Math Zone</h3>
+        <p>Addition, subtraction, counting & games.</p>
+        <button class="btn" onclick="location.href='grade1-math.html'">Start Math</button>
+      </div>
+
+      <!-- Fun Activities -->
+      <div class="card">
+        <img src="images/grade1-fun.jpg" alt="Fun Activities">
+        <h3>🎨 Fun Activities</h3>
+        <p>Puzzles, matching games & creative play.</p>
+        <button class="btn" onclick="location.href='grade1-fun.html'">Explore Fun</button>
+      </div>
+    </div>
+
+    <button class="btn" style="margin-top: 2rem;" onclick="location.href='index.html'">⬅ Back to Home</button>
+  </div>
+
+</body>
+</html>
